@@ -1,29 +1,29 @@
 "use client"
 
+import Image from "next/image"
 import { motion } from "framer-motion"
-import { Search, Zap, Database, Users } from "lucide-react"
 
 const features = [
   {
-    icon: Search,
+    image: "/images/features/sourcing.jpg",
     title: "Reliable Product Sourcing",
     description:
       "We carefully select products that meet high standards of quality and safety for every customer.",
   },
   {
-    icon: Zap,
+    image: "/images/features/fulfillment.jpg",
     title: "Fast Fulfillment",
     description:
       "Quick and accurate order processing ensures your products arrive when you need them.",
   },
   {
-    icon: Database,
+    image: "/images/features/inventory.jpg",
     title: "Consistent Inventory",
     description:
       "Dependable stock levels mean you can count on us for continuous supply.",
   },
   {
-    icon: Users,
+    image: "/images/features/customers.jpg",
     title: "Trusted by Retailers & Households",
     description:
       "From small businesses to family homes, our customers trust us for everyday essentials.",
@@ -60,7 +60,7 @@ export function FeatureGrid() {
           transition={{ duration: 0.6 }}
           className="mx-auto max-w-2xl text-center"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Why Choose Kings Highway Distributors?
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
@@ -79,17 +79,25 @@ export function FeatureGrid() {
             <motion.div
               key={feature.title}
               variants={itemVariants}
-              className="group relative rounded-2xl border border-border bg-background p-8 transition-all hover:border-primary/20 hover:shadow-lg"
+              className="group relative overflow-hidden rounded-2xl border border-border bg-background transition-all hover:border-primary/20 hover:shadow-lg"
             >
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 transition-colors group-hover:bg-primary">
-                <feature.icon className="h-6 w-6 text-primary transition-colors group-hover:text-primary-foreground" />
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src={feature.image}
+                  alt={feature.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
               </div>
-              <h3 className="text-lg font-semibold text-foreground">
-                {feature.title}
-              </h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {feature.description}
-              </p>
+              <div className="relative p-6 -mt-8">
+                <h3 className="font-[family-name:var(--font-poppins)] text-lg font-semibold text-foreground">
+                  {feature.title}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {feature.description}
+                </p>
+              </div>
             </motion.div>
           ))}
         </motion.div>

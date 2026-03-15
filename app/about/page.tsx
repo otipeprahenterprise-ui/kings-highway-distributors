@@ -1,7 +1,7 @@
 "use client"
 
+import Image from "next/image"
 import { motion } from "framer-motion"
-import { Target, Eye, Award, Users, TrendingUp, Shield } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 
 const fadeInUp = {
@@ -20,22 +20,22 @@ const staggerContainer = {
 
 const values = [
   {
-    icon: Award,
+    image: "/images/about/quality.jpg",
     title: "Quality First",
     description: "We partner only with trusted brands to ensure every product meets the highest standards."
   },
   {
-    icon: Users,
+    image: "/images/about/customer-focus.jpg",
     title: "Customer Focus",
     description: "Your success is our priority. We build lasting relationships through exceptional service."
   },
   {
-    icon: TrendingUp,
+    image: "/images/about/growth.jpg",
     title: "Continuous Growth",
     description: "We constantly expand our catalog and improve our processes to serve you better."
   },
   {
-    icon: Shield,
+    image: "/images/about/reliability.jpg",
     title: "Reliability",
     description: "Consistent quality and dependable fulfillment you can count on, every single time."
   }
@@ -52,8 +52,17 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-primary py-20 lg:py-28">
-        <div className="container mx-auto px-4">
+      <section className="relative bg-primary py-20 lg:py-28 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/about/warehouse.jpg"
+            alt="Distribution warehouse"
+            fill
+            className="object-cover opacity-20"
+            priority
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -73,7 +82,7 @@ export default function AboutPage() {
       {/* Story Section */}
       <section className="py-16 lg:py-24 bg-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -103,13 +112,13 @@ export default function AboutPage() {
                   </p>
                 </div>
               </div>
-              <div className="bg-muted rounded-2xl p-8 aspect-square flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-4xl font-bold text-primary">KHD</span>
-                  </div>
-                  <p className="text-muted-foreground font-medium">Established Excellence</p>
-                </div>
+              <div className="relative h-80 md:h-96 rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/about/warehouse.jpg"
+                  alt="Our distribution center"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </motion.div>
           </div>
@@ -127,14 +136,21 @@ export default function AboutPage() {
             className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto"
           >
             <motion.div variants={fadeInUp}>
-              <Card className="h-full border-0 shadow-lg">
-                <CardContent className="p-8">
-                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-                    <Target className="w-7 h-7 text-primary" />
+              <Card className="h-full border-0 shadow-lg overflow-hidden">
+                <div className="relative h-48">
+                  <Image
+                    src="/images/features/sourcing.jpg"
+                    alt="Our mission"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-primary/80 flex items-center justify-center">
+                    <h3 className="font-[family-name:var(--font-poppins)] text-2xl font-bold text-primary-foreground">
+                      Our Mission
+                    </h3>
                   </div>
-                  <h3 className="font-[family-name:var(--font-poppins)] text-2xl font-bold text-foreground mb-4">
-                    Our Mission
-                  </h3>
+                </div>
+                <CardContent className="p-8">
                   <p className="text-muted-foreground leading-relaxed">
                     To be the most reliable distributor of personal care, pet care, and cleaning 
                     products by delivering consistent quality, competitive pricing, and 
@@ -145,14 +161,21 @@ export default function AboutPage() {
             </motion.div>
 
             <motion.div variants={fadeInUp}>
-              <Card className="h-full border-0 shadow-lg">
-                <CardContent className="p-8">
-                  <div className="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
-                    <Eye className="w-7 h-7 text-secondary" />
+              <Card className="h-full border-0 shadow-lg overflow-hidden">
+                <div className="relative h-48">
+                  <Image
+                    src="/images/features/inventory.jpg"
+                    alt="Our vision"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-secondary/80 flex items-center justify-center">
+                    <h3 className="font-[family-name:var(--font-poppins)] text-2xl font-bold text-secondary-foreground">
+                      Our Vision
+                    </h3>
                   </div>
-                  <h3 className="font-[family-name:var(--font-poppins)] text-2xl font-bold text-foreground mb-4">
-                    Our Vision
-                  </h3>
+                </div>
+                <CardContent className="p-8">
                   <p className="text-muted-foreground leading-relaxed">
                     To become the leading distribution partner for essential household products, 
                     recognized for our unwavering commitment to quality, innovation, and 
@@ -219,11 +242,17 @@ export default function AboutPage() {
           >
             {values.map((value, index) => (
               <motion.div key={index} variants={fadeInUp}>
-                <Card className="h-full border-0 shadow-md hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6 text-center">
-                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                      <value.icon className="w-6 h-6 text-primary" />
-                    </div>
+                <Card className="h-full border-0 shadow-md hover:shadow-lg transition-shadow overflow-hidden group">
+                  <div className="relative h-40 overflow-hidden">
+                    <Image
+                      src={value.image}
+                      alt={value.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
+                  </div>
+                  <CardContent className="p-6 text-center -mt-4 relative">
                     <h3 className="font-[family-name:var(--font-poppins)] text-lg font-semibold text-foreground mb-2">
                       {value.title}
                     </h3>

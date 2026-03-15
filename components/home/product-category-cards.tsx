@@ -3,15 +3,14 @@
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { ArrowRight, Sparkles, Heart, SprayCan } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 const categories = [
   {
     id: "personal-care",
     title: "Personal Care",
     description: "Soaps, grooming products, and hygiene essentials.",
-    icon: Sparkles,
-    color: "bg-primary",
+    image: "/images/categories/personal-care.jpg",
     href: "/products#personal-care",
   },
   {
@@ -19,16 +18,14 @@ const categories = [
     title: "Pet Products",
     description:
       "Grooming tools, toys, feeding accessories, and wellness items.",
-    icon: Heart,
-    color: "bg-secondary",
+    image: "/images/categories/pet-care.jpg",
     href: "/products#pet-products",
   },
   {
     id: "cleaning",
     title: "Cleaning Products",
     description: "Household cleaners, sprays, wipes, and cleaning tools.",
-    icon: SprayCan,
-    color: "bg-primary",
+    image: "/images/categories/cleaning.jpg",
     href: "/products#cleaning",
   },
 ]
@@ -63,7 +60,7 @@ export function ProductCategoryCards() {
           transition={{ duration: 0.6 }}
           className="mx-auto max-w-2xl text-center"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Our Product Categories
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
@@ -84,20 +81,17 @@ export function ProductCategoryCards() {
                 href={category.href}
                 className="group block h-full overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all hover:border-primary/30 hover:shadow-xl"
               >
-                <div className="relative h-48 overflow-hidden bg-muted">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div
-                      className={`flex h-20 w-20 items-center justify-center rounded-full ${category.color}/10`}
-                    >
-                      <category.icon
-                        className={`h-10 w-10 ${category.color === "bg-primary" ? "text-primary" : "text-secondary"}`}
-                      />
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
+                <div className="relative h-56 overflow-hidden">
+                  <Image
+                    src={category.image}
+                    alt={category.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-foreground">
+                <div className="relative p-6 -mt-6">
+                  <h3 className="font-[family-name:var(--font-poppins)] text-xl font-semibold text-foreground">
                     {category.title}
                   </h3>
                   <p className="mt-2 text-muted-foreground">

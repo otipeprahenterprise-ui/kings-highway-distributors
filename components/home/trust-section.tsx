@@ -1,27 +1,27 @@
 "use client"
 
+import Image from "next/image"
 import { motion } from "framer-motion"
-import { Store, Building2, Briefcase, Heart, Home } from "lucide-react"
 
 const audiences = [
   {
-    icon: Store,
+    image: "/images/trust/amazon.jpg",
     label: "Amazon Customers",
   },
   {
-    icon: Building2,
+    image: "/images/trust/retail.jpg",
     label: "Retail Partners",
   },
   {
-    icon: Briefcase,
+    image: "/images/trust/business.jpg",
     label: "Small Businesses",
   },
   {
-    icon: Heart,
+    image: "/images/trust/pet-owners.jpg",
     label: "Pet Owners",
   },
   {
-    icon: Home,
+    image: "/images/trust/household.jpg",
     label: "Households",
   },
 ]
@@ -37,7 +37,7 @@ export function TrustSection() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
+          <h2 className="font-[family-name:var(--font-poppins)] text-2xl font-bold text-foreground sm:text-3xl">
             Proudly Serving
           </h2>
         </motion.div>
@@ -47,7 +47,7 @@ export function TrustSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-6 sm:gap-10"
+          className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6"
         >
           {audiences.map((audience, index) => (
             <motion.div
@@ -56,14 +56,22 @@ export function TrustSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.1 * index }}
-              className="flex flex-col items-center gap-3"
+              className="group flex flex-col items-center"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-card shadow-md">
-                <audience.icon className="h-6 w-6 text-primary" />
+              <div className="relative w-full aspect-square max-w-[160px] overflow-hidden rounded-2xl shadow-md">
+                <Image
+                  src={audience.image}
+                  alt={audience.label}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
+                <div className="absolute inset-0 flex items-end justify-center p-3">
+                  <span className="text-sm font-medium text-white text-center">
+                    {audience.label}
+                  </span>
+                </div>
               </div>
-              <span className="text-sm font-medium text-foreground">
-                {audience.label}
-              </span>
             </motion.div>
           ))}
         </motion.div>
