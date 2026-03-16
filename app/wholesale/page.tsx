@@ -332,7 +332,7 @@ export default function WholesalePage() {
                             value={formData.phone}
                             onChange={handleInputChange}
                             className="w-full px-4 py-3 rounded-lg bg-muted border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                            placeholder="(555) 123-4567"
+                            placeholder="+1 (516) 859-5438"
                           />
                         </div>
                       </div>

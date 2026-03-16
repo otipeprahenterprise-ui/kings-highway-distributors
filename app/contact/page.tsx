@@ -39,14 +39,14 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Call Us",
-    details: "(555) 123-4567",
-    subtext: "Mon-Fri, 9am-5pm EST"
+    details: "+15168595438",
+    subtext: "USA Seattle"
   },
   {
     icon: MapPin,
     title: "Visit Us",
-    details: "123 Distribution Way",
-    subtext: "Brooklyn, NY 11223"
+    details: "5310 E M Street",
+    subtext: "Tacoma WA, 98404"
   },
   {
     icon: Clock,
@@ -244,7 +244,7 @@ export default function ContactPage() {
                           <Input
                             id="phone"
                             type="tel"
-                            placeholder="(555) 123-4567"
+                            placeholder="+1 (516) 859-5438"
                             value={formState.phone}
                             onChange={(e) => handleChange("phone", e.target.value)}
                             className="bg-background"

@@ -41,6 +41,14 @@ export function Footer() {
                 <Mail className="h-4 w-4" />
                 <span>info@kingshighwaydistributors.com</span>
               </div>
+              <div className="flex items-center gap-2">
+                <Phone className="h-4 w-4" />
+                <span>+15168595438</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <MapPin className="h-4 w-4 mt-0.5" />
+                <span>5310 E M Street, Tacoma WA, 98404</span>
+              </div>
             </div>
           </div>
 
