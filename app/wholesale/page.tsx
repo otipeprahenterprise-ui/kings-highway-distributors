@@ -2,7 +2,8 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { CheckCircle2, Package, Truck, DollarSign, Users, ArrowRight, Building2 } from "lucide-react"
+import { CheckCircle2, ArrowRight, Building2 } from "lucide-react"
+import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
@@ -22,22 +23,22 @@ const staggerContainer = {
 
 const benefits = [
   {
-    icon: DollarSign,
+    image: "/images/trust/retail.jpg",
     title: "Competitive Pricing",
     description: "Volume-based discounts that help maximize your margins and stay competitive in the market."
   },
   {
-    icon: Package,
+    image: "/images/cards/product_packaging_1773618219482.png",
     title: "Extensive Catalog",
     description: "Access to our full range of personal care, pet care, and cleaning products in bulk quantities."
   },
   {
-    icon: Truck,
+    image: "/images/cards/logistics_shipping_1773618769738.png",
     title: "Reliable Fulfillment",
     description: "Consistent delivery schedules and dependable inventory management you can count on."
   },
   {
-    icon: Users,
+    image: "/images/about/customer-focus.jpg",
     title: "Dedicated Support",
     description: "Personal account management and responsive customer service for all your needs."
   }
@@ -139,11 +140,17 @@ export default function WholesalePage() {
           >
             {benefits.map((benefit, index) => (
               <motion.div key={index} variants={fadeInUp}>
-                <Card className="h-full border-0 shadow-md hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
-                      <benefit.icon className="w-6 h-6 text-primary" />
-                    </div>
+                <Card className="h-full border-0 shadow-md hover:shadow-lg transition-shadow overflow-hidden group p-0">
+                  <div className="relative h-48 overflow-hidden w-full">
+                    <Image
+                      src={benefit.image}
+                      alt={benefit.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+                  </div>
+                  <CardContent className="p-6 relative -mt-6 bg-background rounded-t-2xl z-10 w-full pt-6">
                     <h3 className="font-[family-name:var(--font-poppins)] text-lg font-semibold text-foreground mb-2">
                       {benefit.title}
                     </h3>

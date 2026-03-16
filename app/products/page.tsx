@@ -2,7 +2,8 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Search, Filter, Sparkles, Heart, SprayCan, ExternalLink } from "lucide-react"
+import { Search, Filter, ExternalLink } from "lucide-react"
+import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
@@ -22,10 +23,10 @@ const staggerContainer = {
 }
 
 const categories = [
-  { id: "all", name: "All Products", icon: Filter },
-  { id: "personal-care", name: "Personal Care", icon: Sparkles },
-  { id: "pet-care", name: "Pet Care", icon: Heart },
-  { id: "cleaning", name: "Cleaning Products", icon: SprayCan },
+  { id: "all", name: "All Products" },
+  { id: "personal-care", name: "Personal Care" },
+  { id: "pet-care", name: "Pet Care" },
+  { id: "cleaning", name: "Cleaning Products" },
 ]
 
 const products = [
@@ -118,10 +119,10 @@ const products = [
   },
 ]
 
-const categoryColors: Record<string, { bg: string; text: string; icon: string }> = {
-  "personal-care": { bg: "bg-primary/10", text: "text-primary", icon: "text-primary" },
-  "pet-care": { bg: "bg-secondary/10", text: "text-secondary", icon: "text-secondary" },
-  "cleaning": { bg: "bg-amber-500/10", text: "text-amber-600", icon: "text-amber-600" },
+const categoryColors: Record<string, { bg: string; text: string }> = {
+  "personal-care": { bg: "bg-primary/10", text: "text-primary" },
+  "pet-care": { bg: "bg-secondary/10", text: "text-secondary" },
+  "cleaning": { bg: "bg-amber-500/10", text: "text-amber-600" },
 }
 
 export default function ProductsPage() {
@@ -182,7 +183,7 @@ export default function ProductsPage() {
                     : "bg-card text-foreground hover:bg-card/80 border border-border"
                 }`}
               >
-                <category.icon className="w-4 h-4" />
+                <Filter className="w-4 h-4 hidden" />
                 {category.name}
               </button>
             ))}
@@ -209,19 +210,14 @@ export default function ProductsPage() {
                     <Card className="h-full border-0 shadow-md hover:shadow-xl transition-all duration-300 group overflow-hidden">
                       <CardContent className="p-0">
                         {/* Product Image Placeholder */}
-                        <div className={`h-40 ${colors.bg} flex items-center justify-center relative overflow-hidden`}>
-                          <div className="text-center">
-                            {product.category === "personal-care" && (
-                              <Sparkles className={`w-12 h-12 ${colors.icon} mx-auto mb-2`} />
-                            )}
-                            {product.category === "pet-care" && (
-                              <Heart className={`w-12 h-12 ${colors.icon} mx-auto mb-2`} />
-                            )}
-                            {product.category === "cleaning" && (
-                              <SprayCan className={`w-12 h-12 ${colors.icon} mx-auto mb-2`} />
-                            )}
-                          </div>
-                          <div className="absolute inset-0 bg-foreground/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div className={`h-48 w-full relative overflow-hidden`}>
+                           <Image
+                             src={`/images/products/unique/product-${product.id}.jpg`}
+                             alt={product.name}
+                             fill
+                             className="object-cover transition-transform duration-500 group-hover:scale-105"
+                           />
+                          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
                         </div>
 
                         {/* Product Info */}
