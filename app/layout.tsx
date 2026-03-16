@@ -28,6 +28,10 @@ export const metadata: Metadata = {
     description: 'Kings Highway Distributors supplies trusted personal care, pet care, and cleaning products to households, retailers, and businesses with reliable fulfillment and consistent quality.',
     type: 'website',
   },
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 }
 
 export const viewport: Viewport = {
