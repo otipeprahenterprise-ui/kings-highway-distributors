@@ -25,7 +25,7 @@ export function Navbar() {
             <Package className="h-5 w-5 text-primary-foreground" />
           </div>
           <span className="text-lg font-semibold text-foreground">
-            Kings Highway
+            Kings Highways
           </span>
         </Link>
 

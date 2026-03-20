@@ -19,13 +19,13 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'Kings Highway Distributors | Personal Care, Pet Care & Cleaning Products',
-  description: 'Kings Highway Distributors supplies trusted personal care, pet care, and cleaning products to households, retailers, and businesses with reliable fulfillment and consistent quality.',
+  title: 'Kings Highways Distributors | Personal Care, Pet Care & Cleaning Products',
+  description: 'Kings Highways Distributors supplies trusted personal care, pet care, and cleaning products to households, retailers, and businesses with reliable fulfillment and consistent quality.',
   keywords: ['personal care products', 'pet care products', 'cleaning products', 'wholesale distributor', 'B2B distributor', 'Amazon seller'],
-  authors: [{ name: 'Kings Highway Distributors' }],
+  authors: [{ name: 'Kings Highways Distributors' }],
   openGraph: {
-    title: 'Kings Highway Distributors | Personal Care, Pet Care & Cleaning Products',
-    description: 'Kings Highway Distributors supplies trusted personal care, pet care, and cleaning products to households, retailers, and businesses with reliable fulfillment and consistent quality.',
+    title: 'Kings Highways Distributors | Personal Care, Pet Care & Cleaning Products',
+    description: 'Kings Highways Distributors supplies trusted personal care, pet care, and cleaning products to households, retailers, and businesses with reliable fulfillment and consistent quality.',
     type: 'website',
   },
   icons: {

@@ -70,7 +70,7 @@ export default function AboutPage() {
             className="max-w-3xl mx-auto text-center"
           >
             <h1 className="font-[family-name:var(--font-poppins)] text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 text-balance">
-              About Kings Highway Distributors
+              About Kings Highways Distributors
             </h1>
             <p className="text-xl text-primary-foreground/90 text-pretty">
               Your trusted partner for quality personal care, pet care, and cleaning products.
@@ -96,7 +96,7 @@ export default function AboutPage() {
                 </h2>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
-                    Kings Highway Distributors was founded with a simple mission: to provide 
+                    Kings Highways Distributors was founded with a simple mission: to provide 
                     households, retailers, and businesses with reliable access to quality 
                     everyday essentials.
                   </p>

@@ -108,7 +108,7 @@ export default function WholesalePage() {
               Wholesale Partnership
             </h1>
             <p className="text-xl text-primary-foreground/90 text-pretty">
-              Partner with Kings Highway Distributors for reliable wholesale supply of quality products at competitive prices.
+              Partner with Kings Highways Distributors for reliable wholesale supply of quality products at competitive prices.
             </p>
           </motion.div>
         </div>

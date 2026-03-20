@@ -27,7 +27,7 @@ export function CTASection() {
               Looking for a Reliable Product Distributor?
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-primary-foreground/80">
-              Partner with Kings Highway Distributors for consistent quality,
+              Partner with Kings Highways Distributors for consistent quality,
               competitive pricing, and dependable fulfillment.
             </p>
             <div className="mt-10">

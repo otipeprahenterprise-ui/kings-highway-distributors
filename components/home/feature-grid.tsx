@@ -61,7 +61,7 @@ export function FeatureGrid() {
           className="mx-auto max-w-2xl text-center"
         >
           <h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Why Choose Kings Highway Distributors?
+            Why Choose Kings Highways Distributors?
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             We deliver quality and reliability in every order

@@ -30,7 +30,7 @@ export function Footer() {
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
                 <Package className="h-5 w-5 text-primary-foreground" />
               </div>
-              <span className="text-lg font-semibold">Kings Highway</span>
+              <span className="text-lg font-semibold">Kings Highways</span>
             </Link>
             <p className="text-sm text-background/70">
               Your trusted distributor of personal care, pet care, and cleaning
@@ -112,7 +112,7 @@ export function Footer() {
 
         <div className="mt-12 border-t border-background/20 pt-8">
           <p className="text-center text-sm text-background/70">
-            &copy; {new Date().getFullYear()} Kings Highway Distributors. All
+            &copy; {new Date().getFullYear()} Kings Highways Distributors. All
             rights reserved.
           </p>
         </div>

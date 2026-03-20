@@ -31,7 +31,7 @@ export function HeroSection() {
               Reliable Everyday Essentials for Homes and Businesses
             </h1>
             <p className="mt-6 text-pretty text-lg text-background/70 sm:text-xl">
-              Kings Highway Distributors supplies trusted personal care, pet
+              Kings Highways Distributors supplies trusted personal care, pet
               care, and cleaning products with consistent fulfillment and
               dependable quality.
             </p>
