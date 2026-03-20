@@ -5,11 +5,14 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
     const { name, email, company, phone, inquiryType, message, type } = body;
+    console.log('Sending emails for:', { name, email, type });
+    const receiverEmail = process.env.CONTACT_RECEIVER_EMAIL || process.env.SMTP_USER;
+    console.log('Receiver email:', receiverEmail);
 
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT),
-      secure: true, // true for 465, false for other ports
+      secure: true,
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
@@ -18,10 +21,10 @@ export async function POST(req: Request) {
 
     // Email to the company
     const mailOptionsCompany = {
-      from: `"Kings Highways Website" <${process.env.SMTP_USER}>`,
-      to: process.env.CONTACT_RECEIVER_EMAIL,
+      from: `${process.env.SMTP_USER}`, // Simplified from field
+      to: receiverEmail,
       replyTo: email,
-      subject: `New ${type === 'wholesale' ? 'Wholesale' : 'Contact'} Inquiry from ${name}`,
+      subject: `[INQUIRY] ${type === 'wholesale' ? 'Wholesale' : 'Contact'} - From ${name}`,
       text: `
         Name: ${name}
         Email: ${email}
@@ -77,17 +80,30 @@ export async function POST(req: Request) {
       `,
     };
 
-    // Send both emails
-    await Promise.all([
-      transporter.sendMail(mailOptionsCompany),
-      transporter.sendMail(mailOptionsUser),
-    ]);
+    // Send emails sequentially for easier debugging
+    console.log('Attempting to send company email to:', receiverEmail);
+    const infoCompany = await transporter.sendMail(mailOptionsCompany);
+    console.log('Company email sent. ID:', infoCompany.messageId, 'Response:', infoCompany.response);
 
-    return NextResponse.json({ success: true, message: 'Emails sent successfully' });
-  } catch (error) {
-    console.error('Email sending error:', error);
+    console.log('Attempting to send confirmation email to user:', email);
+    const infoUser = await transporter.sendMail(mailOptionsUser);
+    console.log('User confirmation email sent. ID:', infoUser.messageId, 'Response:', infoUser.response);
+
+    return NextResponse.json({ 
+      success: true, 
+      message: 'Emails sent successfully',
+      companyMailId: infoCompany.messageId,
+      userMailId: infoUser.messageId
+    });
+  } catch (error: any) {
+    console.error('SERVER-SIDE ERROR during email handling:', error);
     return NextResponse.json(
-      { success: false, message: 'Failed to send emails' },
+      { 
+        success: false, 
+        message: 'Failed to send emails', 
+        error: error.message,
+        stack: error.stack 
+      },
       { status: 500 }
     );
   }
