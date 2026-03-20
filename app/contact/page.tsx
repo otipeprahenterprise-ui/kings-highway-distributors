@@ -33,7 +33,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email Us",
-    details: "info@kingshighwaydistributors.com",
+    details: "info@kingshighways.com",
     subtext: "We respond within 24 hours"
   },
   {
