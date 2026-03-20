@@ -76,11 +76,35 @@ export default function WholesalePage() {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.contactName,
+          email: formData.email,
+          company: formData.companyName,
+          phone: formData.phone,
+          inquiryType: formData.businessType,
+          message: formData.message,
+          type: 'wholesale',
+        }),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true)
+      } else {
+        console.error('Failed to send message');
+        alert('Failed to send message. Please try again later.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('An error occurred. Please try again later.');
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
